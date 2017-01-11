@@ -14,5 +14,5 @@ b = 1;
 
 % ODE NAR
 X = sym('X');
-t = sym('t');
+
 dX/dt = b*(1/(1+(X/K)^n))-a*X;

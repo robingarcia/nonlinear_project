@@ -16,8 +16,6 @@ X0=0;
 
 
 % ODE NAR
-%dX/dt = b*(1/(1+(X/K)^n))-a*X;
-%y = dsolve((diff(X)==b*(1/(1+(X/K)^n))-a*X));
 [t,X] = ode45(@(t,X) b*(1/(1+(X/K)^n))-a*X, tspan, X0);
 plot(t,X,'-o')
 title('Solution of negative autoregulation with ODE45');

@@ -6,13 +6,20 @@
 % Model class for NAR
 
 
-% Parameters with IC
-n = 1;
-K = 0.1;
-a = 1;
-b = 1;
+% Definition of Parameters
+syms n;
+syms K = 0.1;
+syms a = 1;
+syms b = 1;
+syms X;
+
+
+syms n = 1;
+syms K = 0.1;
+syms a = 1;
+syms b = 1;
 
 % ODE NAR
 X = sym('X');
-
+t = sym('t');
 dX/dt = b*(1/(1+(X/K)^n))-a*X;

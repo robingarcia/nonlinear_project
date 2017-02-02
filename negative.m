@@ -17,12 +17,10 @@ n = 2;
 
 %The extra brackets allow you to add additional variables
 %For ode45 the format is ode45(@function, timespan, initial conditions)
-[t, X] = ode45(@func_unregulated, tspan, IC, [], delta, gamma, alpha_b, alpha_o, k, K, n); % unregulated
 [t, Y] = ode45(@func_negative, tspan, IC, [], delta, gamma, alpha_b, alpha_o, k, K, n); % negative
-[t, Z] = ode45(@func_positive, tspan, IC, [], delta, gamma, alpha_b, alpha_o, k, K, n); % positive
 
-plot(t,X, Y, Z); 
-legend('mRNA','Protein A')
+
+plot(t,Y(:,1)); 
 xlabel('Time')
 ylabel('Protein A Concentration')
 title('Negative Autoregulation')

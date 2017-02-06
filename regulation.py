@@ -1,12 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec 13 10:09:54 2016
+Created on Fri Feb  3 16:26:31 2017
 
 @author: robin
 """
 
-# Implementation of negative autoregulation
+'''
+Implementation of three types of regulation 
+1) unregulated
+2) negative autoregulation
+3) positive autoregulation
+
+This also includes a sensitivity analysis
+'''
 
 #from scipy.integrate import ode
 #import scipy.integrate as integrate
@@ -19,10 +26,22 @@ from matplotlib.pylab import *
  
 def negauto(t, x):
     
-    n = 2
-    K = 1e4
-    a = 0.375
-    b = 0.5
+    alpha_a = 0.375
+    alpha_b = 0.5
+    alpha_o = 5e-4
+    k       = 0.116
+    delta   = 5.78e-3
+    gamma   = 1.16e-3
+    K       = 1e4
+    n       = 2
+    
+'''
+dudt = unregulated 
+dndt = negative autoregulation
+dpdt = positive autoregulation
+'''
+
+
     
     # Assign some variables for convenience of notation
     x0 = x[0]
@@ -42,7 +61,7 @@ if __name__ == '__main__':
     
     # Set the time range
     t_start = 0.0
-    t_final = 100.0
+    t_final = 5.0
     delta_t = 0.1
     
     # Number of time steps: 1 extra for initial condition
@@ -74,4 +93,3 @@ if __name__ == '__main__':
     xlabel('Time t')
     ylabel('Solution X')
     title('Solution of negative autoregulation')
-

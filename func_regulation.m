@@ -1,4 +1,4 @@
-function output = func_unregulated(t, IC, delta, gamma, alpha_b,alpha_a,alpha_o,K,n, k)
+function output = func_regulation(t, IC, delta, gamma, alpha_b,alpha_a,alpha_o,K,n, k)
 %Parameters
 alpha_a = 0.375;
 alpha_b = 0.5;      % Promotor strength

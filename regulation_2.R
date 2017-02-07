@@ -36,12 +36,53 @@ lines(out$time, out$P, lty = 1, lwd = 2, col = "black")
 legend("topright", c("Unregulated", "Negative autoregulation", "Positive autoregulation"),
        lty = c(1,1,1), lwd = c(2,2,2), col = c("blue","red","black"))
 
-## Sensitivity analysis
+## Sensitivity analysis unregulated
 SnsU <- sensFun(func = solveREG, parms = pars, sensvar = "U",varscale = 1)
 head(SnsU)
 plot(SnsU)
-plot(SnsU, type = "b", pch = 15:19, col = 2:6, 
-     main = "Sensitivity all vars")
+plot(SnsU,type = "b",  pch = 0:7, col = 2:9, 
+     main = "Sensitivity all vars (Unregulated)")
+summary(SnsU)
+plot(summary(SnsU))
 
-summary(SnsBact)
-plot(summary(SnsBact))
+## Sensitivity analysis negative autoregulation
+SnsN <- sensFun(func = solveREG, parms = pars, sensvar = "N",varscale = 1)
+head(SnsN)
+plot(SnsN)
+plot(SnsN, type = "b", pch = 0:7, col = 2:9, 
+     main = "Sensitivity all vars (Negative autoregulation)")
+summary(SnsN)
+plot(summary(SnsN))
+
+## Sensitivity analysis positive autoregulation
+SnsP <- sensFun(func = solveREG, parms = pars, sensvar = "P",varscale = 1)
+head(SnsP)
+plot(SnsP)
+plot(SnsP, type = "b", pch = 0:7, col = 2:9, 
+     main = "Sensitivity all vars (Positive autoregulation)")
+summary(SnsP)
+plot(summary(SnsP))
+
+## Compare the sensitivities open- and closed loop
+time = c(out$time)
+x1 = time[c(10000)]
+x2 = time[c(10100)]
+output_u = c(out$U)
+y1u = output_u[c(10000)]
+y2u = output_u[c(10100)]
+slope_u = (y2u-y1u)/(x2-x1)
+
+output_n = c(out$N)
+y1n = output_n[c(10000)]
+y2n = output_n[c(10100)]
+slope_n = (y2n-y1n)/(x2-x1)
+
+output_p = c(out$P)
+y1p = output_p[c(10000)]
+y2p = output_p[c(10100)]
+slope_p = (y2p-y1p)/(x2-x1)
+
+for (y2u-y2n){
+  # Define min to max vector for alpha_b
+  # Define min to max vector for k
+}

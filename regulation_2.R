@@ -5,7 +5,6 @@
 #==============================================================================
 
 pars <- list(alpha_a=0.375, alpha_b=0.5, alpha_o=5e-4, k=0.116, delta=5.78e-3, gamma=1.16e-3, K=1e4, n=2)
-
 solveREG <- function(pars) {
   derivs <- function (t, state, pars) {
     with (as.list(c(state, pars)), {
@@ -24,7 +23,6 @@ tout  <- seq(0,12000)
 return(as.data.frame(ode(y=state, times = tout, func = derivs, parms = pars)))
 }
 out <- solveREG(pars)
-
 # Plot the results
 plot(out$time, out$U, ylim = range(c(out$U, out$N, out$P)),
      xlab = "Time (min)", ylab = "Concentration (nM)", type = "l", lwd = 1)
@@ -82,7 +80,3 @@ y1p = output_p[c(10000)]
 y2p = output_p[c(10100)]
 slope_p = (y2p-y1p)/(x2-x1)
 
-for (y2u-y2n){
-  # Define min to max vector for alpha_b
-  # Define min to max vector for k
-}

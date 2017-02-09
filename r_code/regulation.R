@@ -35,5 +35,4 @@ summary(out)
 ## Default plot method
 plot(out)
 
-## User specified plotting
 
